@@ -7,7 +7,7 @@
   <title>Indian Ethnic Wear Online for Women & Men | Rajwadi</title>
   <meta name="description"
     content="Shop premium Indian ethnic wear for women, men, and kids at Rajwadi. Replicated with custom stitching options, cart logic, and premium royal aesthetics.">
-  <link rel="stylesheet" href="rajwadi.css?v=56">
+  <link rel="stylesheet" href="rajwadi_v2.css">
   <!-- FontAwesome for Premium Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -79,6 +79,11 @@
   <!-- Main Header -->
   <header class="main-header">
     <div class="header-container">
+      <!-- Hamburger Menu Button (Mobile Only) -->
+      <button class="action-icon-btn mobile-menu-btn" id="mobileMenuBtn" onclick="document.querySelector('.nav-categories-header').classList.add('active'); document.querySelector('.mobile-menu-overlay').classList.add('active');" title="Menu" style="margin-right: 15px; color: #ff0000; font-size: 28px;">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
       <!-- Brand Logo -->
       <a href="#" class="logo-area" onclick="showView('home'); return false;">
         <img src="https://www.rajwadi.com/media/logo/default/logo-global.jpg" alt="Rajwadi Logo" class="logo-desktop"
@@ -88,13 +93,23 @@
       </a>
 
       <!-- Category Navigation Menu -->
+      <div class="mobile-menu-overlay" onclick="document.querySelector('.nav-categories-header').classList.remove('active'); document.querySelector('.mobile-menu-overlay').classList.remove('active');"></div>
       <nav class="nav-categories-header">
+        <div class="mobile-drawer-header">
+          <button class="mobile-menu-close" onclick="document.querySelector('.nav-categories-header').classList.remove('active'); document.querySelector('.mobile-menu-overlay').classList.remove('active');"><i class="fa-solid fa-xmark"></i></button>
+          <img src="https://www.rajwadi.com/static/version1780378735/frontend/Aureatelabs/rajwadi/en_US/images/logo.svg" alt="Rajwadi Logo" style="height: 30px;">
+        </div>
         <ul class="nav-menu">
           <li class="nav-item"><a href="#" class="nav-link" onclick="showView('home'); return false;">Home</a></li>
           <li class="nav-item"><a href="#" class="nav-link" onclick="showView('about'); return false;">About Us</a></li>
           <li class="nav-item"><a href="#" class="nav-link" onclick="showView('story'); return false;">Our Story</a></li>
           <li class="nav-item has-dropdown">
-            <a href="#" class="nav-link" onclick="showView('catalog'); return false;">Collections <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 4px;"></i></a>
+            <div class="nav-link-wrapper">
+              <a href="#" class="nav-link" onclick="showView('catalog'); return false;">Collections</a>
+              <button class="mobile-submenu-toggle" onclick="this.parentElement.parentElement.classList.toggle('open')">
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
             <ul class="dropdown-menu">
               <li><a href="#" onclick="filterByCategory('Saree'); return false;">Saree</a></li>
               <li><a href="#" onclick="filterByCategory('Lehenga'); return false;">Lehenga Choli</a></li>
@@ -110,6 +125,8 @@
 
       <!-- Action Icons -->
       <div class="header-actions">
+        <!-- Currency / Rupee Icon -->
+        <a href="#" class="action-icon-btn currency-btn" style="font-size:18px; font-weight:600;"><i class="fa-solid fa-indian-rupee-sign"></i></a>
         <!-- Search Toggle Button -->
         <button class="action-icon-btn" id="searchToggleBtn" onclick="toggleSearchOverlay(true)" title="Search">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -117,7 +134,7 @@
         <a href="#" class="action-icon-btn" onclick="toggleWishlistSidebar(true); return false;" title="Wishlist">
           <i class="fa-regular fa-heart"></i>
         </a>
-        <a href="javascript:void(0);" class="action-icon-btn" onclick="showView('account'); return false;"
+        <a href="javascript:void(0);" class="action-icon-btn account-btn" onclick="showView('account'); return false;"
           title="Account">
           <i class="fa-regular fa-user"></i>
         </a>
@@ -686,7 +703,10 @@
       <div class="catalog-layout">
         <!-- Sidebar Filters -->
         <aside class="filter-sidebar">
-          <h3 class="filter-title">Filters</h3>
+          <div class="filter-header-mobile">
+            <h3 class="filter-title" style="margin-bottom:0;">Filters</h3>
+            <button class="mobile-filter-close" onclick="document.querySelector('.filter-sidebar').classList.remove('active')"><i class="fa-solid fa-xmark"></i></button>
+          </div>
 
           <!-- Category Filter -->
           <div class="filter-group">
@@ -776,14 +796,19 @@
         <div class="catalog-content">
           <div class="catalog-content-header">
             <h2 class="catalog-title" id="catalogTitle">Ethnic Wear Collections</h2>
-            <div class="catalog-sorting">
-              <span>Sort By:</span>
+            <div class="catalog-actions-row">
+              <button class="mobile-filter-btn" onclick="document.querySelector('.filter-sidebar').classList.add('active')">
+                <i class="fa-solid fa-sliders"></i> Filter
+              </button>
+              <div class="catalog-sorting">
+                <span>Sort By:</span>
               <select id="sortSelect" class="sort-select" onchange="applyFilters()">
                 <option value="default">Featured</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
                 <option value="rating">Top Rated</option>
               </select>
+              </div>
             </div>
           </div>
 

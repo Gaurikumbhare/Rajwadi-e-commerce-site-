@@ -3565,6 +3565,8 @@ body.lock-scroll {
 
 
 
+
+
 /* ==========================================================================
    MOBILE RESPONSIVENESS OVERRIDES
    ========================================================================== */
@@ -3677,6 +3679,11 @@ body.lock-scroll {
     color: var(--color-charcoal);
   }
 
+  /* Hide Account icon on mobile (matches live site) */
+  .account-btn {
+    display: none !important;
+  }
+
   /* Mobile Drawer Overlay */
   .mobile-menu-overlay {
     position: fixed;
@@ -3735,25 +3742,31 @@ body.lock-scroll {
     cursor: pointer;
   }
 
-  .nav-menu {
+  .nav-categories-header .nav-menu {
     flex-direction: column;
     gap: 0;
     padding: 0;
   }
 
-  .nav-item {
+  .nav-categories-header .nav-item {
     border-bottom: 1px solid var(--color-gray-light);
   }
 
-  .nav-link-wrapper {
+  .nav-categories-header .nav-link-wrapper {
     padding: 15px 20px;
   }
 
-  .nav-link {
-    padding: 0;
+  .nav-categories-header .nav-link {
+    padding: 15px 20px !important;
+    display: block !important;
     border: none;
-    color: var(--color-charcoal);
+    color: var(--color-charcoal) !important;
     font-weight: 500;
+  }
+  
+  .nav-categories-header .nav-link-wrapper .nav-link {
+    padding: 0 !important;
+    display: inline !important;
   }
   
   .mobile-submenu-toggle {

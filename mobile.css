@@ -1,0 +1,236 @@
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERRIDES
+   ========================================================================== */
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Tablet & Mobile Screens (max-width: 992px) */
+@media (max-width: 992px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .occasion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .occasion-center-col,
+  .occasion-right-col {
+    grid-template-rows: auto;
+  }
+
+  .catalog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-grid-display {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 10px 0;
+  }
+  
+  .header-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  /* Hamburger Menu Toggle */
+  .mobile-menu-btn {
+    display: flex !important;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hide Desktop Logo, Show Mobile Logo */
+  .logo-desktop {
+    display: none !important;
+  }
+  .logo-mobile {
+    display: block !important;
+    height: 40px;
+  }
+
+  /* Hide navigation by default on mobile, show when active */
+  .nav-categories-header {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--color-maroon);
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-categories-header.active {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 20px;
+  }
+
+  .nav-link {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .nav-item.has-dropdown .dropdown-menu {
+    position: static;
+    display: none;
+    box-shadow: none;
+    background: rgba(0,0,0,0.1);
+    width: 100%;
+  }
+
+  .nav-item.has-dropdown:hover .dropdown-menu,
+  .nav-item.has-dropdown:active .dropdown-menu {
+    display: block;
+  }
+
+  /* Hero Slider adjustments */
+  .slide-title {
+    font-size: 32px;
+  }
+
+  .slide-subtitle {
+    font-size: 14px;
+  }
+  
+  .slide-content {
+    padding: 0 20px;
+  }
+
+  /* Category Grid */
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  /* Occasion Grid */
+  .occasion-card {
+    height: 180px;
+  }
+  .occasion-card.large {
+    height: 300px;
+  }
+  
+  .occasion-info h2 {
+    font-size: 22px;
+  }
+
+  /* Footer layout */
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  /* Catalog */
+  .filter-sidebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* Product Grid */
+  .catalog-grid-display {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  /* Details Layout */
+  .product-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .p-detail-images {
+    position: relative;
+    top: 0;
+  }
+  
+  .p-detail-title {
+    font-size: 24px;
+  }
+  
+  .stitching-section {
+    padding-top: 15px;
+  }
+  
+  .custom-stitch-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Overlays & Modals full width */
+  .cart-drawer, .wishlist-drawer {
+    width: 100%;
+  }
+  
+  .cart-drawer {
+    right: -100%;
+  }
+
+  .cart-drawer-overlay.active + .cart-drawer,
+  .cart-drawer.active {
+    right: 0;
+  }
+
+  .wishlist-drawer {
+    right: -100%;
+  }
+  
+  .wishlist-drawer-overlay.active + .wishlist-drawer,
+  .wishlist-drawer.active {
+    right: 0;
+  }
+
+  .auth-modal-content {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  .checkout-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .door-welcome-text h2 {
+    font-size: 32px;
+  }
+}
+
+/* Extra Small Phones */
+@media (max-width: 480px) {
+  .catalog-grid-display {
+    grid-template-columns: 1fr;
+  }
+
+  .action-row {
+    flex-direction: column;
+  }
+  
+  .btn-add-cart {
+    width: 100%;
+  }
+
+  .p-detail-specs {
+    grid-template-columns: 1fr;
+  }
+}
