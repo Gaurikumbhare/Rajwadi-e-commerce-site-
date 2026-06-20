@@ -112,6 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // Show any view — optional skipCatalogReset prevents resetting catalog filters
 // when navigating from a category/occasion/search context
 function showView(viewId, skipCatalogReset) {
+  // close mobile menu
+  const navHeader = document.querySelector('.nav-categories-header');
+  const navOverlay = document.querySelector('.mobile-menu-overlay');
+  if (navHeader) navHeader.classList.remove('active');
+  if (navOverlay) navOverlay.classList.remove('active');
+
   // ensure view switching also updates the hero slider visibility
   if (viewId === 'home') {
     const slides = document.querySelectorAll('.slide');
@@ -166,7 +172,13 @@ function openRoyalDoors() {
 }
 
 function filterByCategory(categoryName) {
-  // Switch to catalog view WITHOUT resetting filters (we'll set them ourselves)
+  // close mobile menu
+  const navHeader = document.querySelector('.nav-categories-header');
+  const navOverlay = document.querySelector('.mobile-menu-overlay');
+  if (navHeader) navHeader.classList.remove('active');
+  if (navOverlay) navOverlay.classList.remove('active');
+
+  // 1) Go to catalog view but skip the auto-resetting filters (we'll set them ourselves)
   showView('catalog', true);
 
   // Reset sidebar first, then set only the target category
