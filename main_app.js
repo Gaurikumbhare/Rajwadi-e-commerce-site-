@@ -560,7 +560,7 @@ function showProductDetails(productId) {
   container.innerHTML = `
     <!-- Gallery -->
     <div class="p-detail-images">
-        <div class="detail-gallery-main" style="position: relative;">
+        <div class="p-detail-main-img" style="position: relative;">
           <button onclick="toggleWishlist('${product.id}')" style="position: absolute; top: 15px; right: 15px; background: white; border: none; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer; transition: all 0.2s;">
             <i class="${wishlist.includes(product.id) ? 'fa-solid' : 'fa-regular'} fa-heart" style="color: ${wishlist.includes(product.id) ? 'var(--color-maroon)' : '#555'}; font-size: 20px;"></i>
           </button>
