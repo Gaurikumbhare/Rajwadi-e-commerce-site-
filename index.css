@@ -318,28 +318,41 @@ button {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* BANNER HERO SLIDER */
+/* BANNER HERO SLIDER - ACCORDION */
 .hero-slider {
   position: relative;
   height: 520px;
   overflow: hidden;
   background: var(--color-maroon-dark);
+  display: flex;
+  flex-direction: row;
 }
 
 .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
+  flex: 0;
+  width: 0;
   height: 100%;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+  transition: flex 1.5s cubic-bezier(0.4, 0, 0.2, 1), width 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease-out;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  border-right: none;
+}
+
+.slide:last-child {
+  border-right: none;
 }
 
 .slide.active {
+  flex: 1;
+  width: 100%;
   opacity: 1;
+  pointer-events: auto;
+  cursor: default;
 }
 
 .slide-image {
@@ -349,7 +362,15 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.65);
+  object-position: top;
+  filter: brightness(0.4);
+  transition: filter 1.5s ease-out, transform 10s ease-out;
+  transform: scale(1.05);
+}
+
+.slide.active .slide-image {
+  filter: brightness(0.75);
+  transform: scale(1);
 }
 
 .slide-content {
@@ -358,8 +379,17 @@ button {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 40px;
-  width: 100%;
+  width: 100vw;
   color: var(--color-white);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.slide.active .slide-content {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 1.4s;
 }
 
 .slide-title {
@@ -367,6 +397,7 @@ button {
   margin-bottom: 15px;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
   font-family: var(--font-serif);
+  max-width: 60%;
 }
 
 .slide-subtitle {
@@ -376,6 +407,7 @@ button {
   text-transform: uppercase;
   color: var(--color-gold-light);
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  max-width: 60%;
 }
 
 /* Golden luxury button */

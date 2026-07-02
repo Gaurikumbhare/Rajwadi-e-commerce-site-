@@ -27,6 +27,9 @@ let currentSessionUser = null; // Currently logged in user (mocked)
 // DOM Elements & Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize slider
+  document.querySelectorAll(".slide").forEach((slide, index) => {
+    slide.addEventListener("click", () => setSlide(index));
+  });
   startSlider();
 
   // Fetch products from Supabase
@@ -359,7 +362,7 @@ function resetSidebarFilters() {
    ========================================================================== */
 function startSlider() {
   stopSlider();
-  slideInterval = setInterval(nextSlide, 4000);
+  slideInterval = setInterval(nextSlide, 8000);
 }
 
 function stopSlider() {
